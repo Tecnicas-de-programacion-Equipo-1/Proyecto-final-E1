@@ -1,5 +1,4 @@
 from tkinter import Button, N, S, E, W, Label
-
 class Buttons():
     class Constants:
         red = "#E54365"
@@ -23,7 +22,9 @@ class Buttons():
 
 
 
-    def __init__(self, master_rooms):
+    def __init__(self, master_rooms, tap_handler = None):
+        self.__tap_handler = tap_handler
+        self.__state_button = 4
         self.__rooms = master_rooms
         self.__notifications_button = Button(font=self.Constants.font)
         self.__fan_button = Button(font=self.Constants.font)
@@ -73,5 +74,20 @@ class Buttons():
         self.__fan_button.configure(text = self.Constants.fan_text, bg = self.Constants.green)
         self.__fan_button.place(x = 555, y = 350)
 
-        self.__door_button.configure(text = self.Constants.door_text, bg = self.Constants.red)
+
+        self.__door_button.configure(text = self.Constants.door_text, bg = self.Constants.red, command = self.ParkingControl)
         self.__door_button.place(x = 525, y = 425)
+
+    def ParkingControl(self):
+        if self.__state_button == 3:
+            self.__state_button = 4
+        elif self.__state_button == 4:
+            self.__state_button = 3
+        if self.__tap_handler is None: return
+        self.__tap_handler(self.__state_button)
+
+
+
+
+
+
