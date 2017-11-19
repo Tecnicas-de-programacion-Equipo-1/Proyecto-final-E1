@@ -1,14 +1,13 @@
-from tkinter import Tk
+from tkinter import Tk, Canvas
 from Views.Buttons import Buttons
 
 class MainView(Tk):
     class Constants:
         title = "Casa Inteligente"
-        bg = "#BEC1B8"
-        height = 550
+        color_house = "#848689"
+        bg = "#505F80"
+        height = 500
         width = 800
-        row_dimensions = [200, 50, 50, 200]
-        column_dimensions = [150,  150, 100, 200, 100]
 
 
     def __init__(self):
@@ -21,19 +20,14 @@ class MainView(Tk):
         self.__configure_UI()
 
     def __configure_grid(self):
-        self.grid_rowconfigure(0, minsize = 200)
-        self.grid_rowconfigure(1, minsize = 75)
-        self.grid_rowconfigure(2, minsize = 75)
-        self.grid_rowconfigure(3, minsize = 200)
+        self.grid_columnconfigure(0, minsize = 400)
+        self.grid_columnconfigure(1, minsize = 300)
 
-        self.grid_columnconfigure(0, minsize = 150)
-        self.grid_columnconfigure(1, minsize = 150)
-        self.grid_columnconfigure(2, minsize = 100)
-        self.grid_columnconfigure(3, minsize = 200)
-        self.grid_columnconfigure(4, minsize = 100)
+        self.__canvas = Canvas(self, width=400, height=500, bg=self.Constants.bg)
+        self.__canvas.grid(column=0)
 
 
     def __configure_UI(self):
-        Buttons()
+        Buttons(self.__canvas)
 
 
