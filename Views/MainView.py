@@ -10,14 +10,14 @@ class MainView(Tk):
         width = 800
 
 
-    def __init__(self):
+    def __init__(self, tap_handler = None):
         super().__init__()
         self.title(self.Constants.title)
         self.configure(bg = self.Constants.bg)
         self.maxsize(width = self.Constants.width, height = self.Constants.height)
         self.minsize(width = self.Constants.width, height = self.Constants.height)
         self.__configure_grid()
-        self.__configure_UI()
+        self.__configure_UI(tap_handler)
 
     def __configure_grid(self):
         self.grid_columnconfigure(0, minsize = 400)
@@ -27,7 +27,7 @@ class MainView(Tk):
         self.__canvas.grid(column=0)
 
 
-    def __configure_UI(self):
-        Buttons(self.__canvas)
+    def __configure_UI(self,tap_handler):
+        Buttons(self.__canvas, tap_handler)
 
 
