@@ -13,6 +13,7 @@ class MainView(Tk):
 
     def __init__(self, action = None):
         super().__init__()
+        self.__action=action
         self.title(self.Constants.title)
         self.configure(bg = self.Constants.bg)
         self.maxsize(width = self.Constants.width, height = self.Constants.height)
@@ -31,8 +32,9 @@ class MainView(Tk):
         ButtonsMenu(self.__canvas)
         RoomsBottonsMenu(self, action = self.__did_tap)
 
-    def __did_tap(self, sender):
-        self.room = sender
+    def __did_tap(self, sender, pin, status):
+        self.__action(sender, pin, status)
+
 
 
 

@@ -7,16 +7,16 @@ class MainApp():
         for port in list_ports.comports(include_links=True):
             print(port.device, port.name, port.description)
 
-        self.__master = MainView()
+        self.__master = MainView(action = self.__on_off)
         self.__arduino = serial.Serial('COM8', 115200)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
 
     def run(self):
         self.__master.mainloop()
 
-    def __toggle_did_change(self, state):
-        value = str(1 if state else 0).encode('ascii')
-        self.__arduino.write(value)
+    def __on_off(self, sender, pin, state):
+        pin = str(pin).encode('ascii')
+        self.__arduino.write(pin)
 
     def __on_closing(self):
         self.__arduino.close()
