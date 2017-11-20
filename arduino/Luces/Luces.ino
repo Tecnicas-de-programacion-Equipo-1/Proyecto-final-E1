@@ -99,6 +99,22 @@ void serialEvent() {
           }
         digitalWrite(led7, state7);
         break;      
+      case '0':
+        state1 = 0;
+        state2 = 0;
+        state3 = 0;
+        state4 = 0;
+        state5 = 0;
+        state6 = 0;
+        state7 = 0;
+        digitalWrite(led1, state1);
+        digitalWrite(led2, state2);
+        digitalWrite(led3, state3);
+        digitalWrite(led4, state4);
+        digitalWrite(led5, state5);
+        digitalWrite(led6, state6);
+        digitalWrite(led7, state7);
+        break;      
       default:
         break;
     }

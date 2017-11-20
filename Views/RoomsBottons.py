@@ -34,5 +34,8 @@ class RoomsBottons(Button):
         self.__state = not self.__state
         self.__action(self.key, self.pin,  self.__state)
         foreground = self.Constants.letter_color
-        bg = self.Constants.room_color_on if self.__state else self.Constants.room_color_off
+        if self.key == "Apagar \ntodo":
+            bg = self.Constants.room_color_off
+        else:
+            bg = self.Constants.room_color_on if self.__state else self.Constants.room_color_off
         self.configure(bg=bg, foreground=foreground)
