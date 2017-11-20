@@ -8,19 +8,19 @@ class MainApp():
             print(port.device, port.name, port.description)
 
         self.__master = MainView()
-        # self.__arduino = serial.Serial('/dev/tty.usbmodem1421', 115200)
-        # self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
+        self.__arduino = serial.Serial('COM8', 115200)
+        self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
 
     def run(self):
         self.__master.mainloop()
 
-    # def __toggle_did_change(self, state):
-    #     value = str(1 if state else 0).encode('ascii')
-    #     self.__arduino.write(value)
+    def __toggle_did_change(self, state):
+        value = str(1 if state else 0).encode('ascii')
+        self.__arduino.write(value)
 
-    # def __on_closing(self):
-    #     self.__arduino.close()
-    #     self.__master.destroy()
+    def __on_closing(self):
+        self.__arduino.close()
+        self.__master.destroy()
 
 
 if __name__ == "__main__":
