@@ -1,4 +1,5 @@
 from tkinter import Button, N, S, E, W, Label
+from Views.AdditionalButtons import AdditionalButtons
 
 class ButtonsMenu():
     class Constants:
@@ -18,6 +19,8 @@ class ButtonsMenu():
         black = "black"
         center = N + S + E + W
         font = "Rockwell"
+        additionals_buttons = ["Jardin", "Ventiladores", "Puertas Estacionamiento"]
+        additionals_buttons_positions = [[550, 275], [510, 350], [575, 425]]
         garden_text = "Jardin"
         fan_text = "Ventiladores"
         door_text = "Puertas estacionamiento"
@@ -51,17 +54,14 @@ class ButtonsMenu():
 
     def __create_buttons(self):
 
+        for index, key in enumerate(self.Constants.additionals_buttons):
+            x = self.Constants.additionals_buttons_positions[index-1][0]
+            y = self.Constants.additionals_buttons_positions[index-1][1]
+            button = AdditionalButtons(key)
+            button.position(x,y)
+
         self.__weather_label.place(x = 450, y = 50)
         self.__weather_label.config(text=self.Constants.weather_text)
-
-        self.__notifications_button.configure(text = self.Constants.notifications_text, bg = self.Constants.red)
-        self.__notifications_button.place(x = 550, y = 275)
-
-        self.__fan_button.configure(text = self.Constants.fan_text, bg = self.Constants.green)
-        self.__fan_button.place(x = 555, y = 350)
-
-        self.__door_button.configure(text = self.Constants.door_text, bg = self.Constants.red)
-        self.__door_button.place(x = 525, y = 425)
 
 
 
