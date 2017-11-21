@@ -2,6 +2,14 @@ from tkinter import Button, N, S, E, W, Label
 
 class ButtonsMenu():
     class Constants:
+        bed_room_points = [(0, 0), (0, 200), (125, 200), (125, 175), (150, 175), (150, 0)]
+        bath_room1_points = [(0, 200), (0, 275), (125, 275), (125, 200)]
+        bath_room2_points = [(50, 275), (50, 350), (125, 350), (125, 275)]
+        garden_ponits = [(0, 275), (50, 275), (50, 350), (100, 350), (100, 375), (150, 375), (150, 500), (0, 500)]
+        kitchen_ponits = [(150, 0), (150, 175), (300, 175), (300, 0)]
+        living_room_points = [(125, 175), (125, 350), (100, 350), (100, 375), (300, 375), (300, 175)]
+        parking_points = [(150, 375), (150, 500), (400, 500), (400, 375)]
+        serice_room_points = [(300, 0), (300, 200), (400, 200), (400, 0)]
         red = "#E54365"
         green = "#2F942C"
         room_color = "#848689"
@@ -30,8 +38,7 @@ class ButtonsMenu():
         self.__create_buttons()
 
     def __create_plane(self):
-        self.__rooms.create_polygon((0, 0), (0, 200), (125, 200), (125, 175), (150, 175), (150, 0),
-                                    fill=self.Constants.room_color, outline=self.Constants.black)
+        self.__rooms.create_polygon(self.Constants.bed_room_points, fill=self.Constants.room_color, outline=self.Constants.black)
         self.__rooms.create_polygon((0, 200), (0, 275), (125, 275), (125, 200), fill=self.Constants.room_color,
                                     outline=self.Constants.black)
         self.__rooms.create_polygon((50, 275), (50, 350), (125, 350), (125, 275), fill=self.Constants.room_color,
