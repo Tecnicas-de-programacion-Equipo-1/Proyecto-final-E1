@@ -32,8 +32,9 @@ class ButtonsMenu():
         click = "<Button-1>"
 
 
-    def __init__(self, canvas):
+    def __init__(self, canvas, text):
         self.__rooms = canvas
+        self.__weather_text = text
         self.__notifications_button = Button(font=self.Constants.font)
         self.__fan_button = Button(font=self.Constants.font)
         self.__door_button = Button(font=self.Constants.font)
@@ -61,7 +62,7 @@ class ButtonsMenu():
             button.position(x,y)
 
         self.__weather_label.place(x = 450, y = 50)
-        self.__weather_label.config(text=self.Constants.weather_text)
+        self.__weather_label.config(text=self.__weather_text)
 
 
 
