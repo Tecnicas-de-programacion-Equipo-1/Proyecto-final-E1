@@ -5,13 +5,13 @@ from Views.RoomsBottonsMenu import RoomsBottonsMenu
 class MainView(Tk):
     class Constants:
         title = "Casa Inteligente"
-        color_house = "#848689"
+        color_house = "#E44E1E"
         bg = "#505F80"
         height = 500
         width = 800
 
 
-    def __init__(self, action = None):
+    def __init__(self, action = None, weather_text = None):
         super().__init__()
         self.__action=action
         self.title(self.Constants.title)
@@ -19,7 +19,7 @@ class MainView(Tk):
         self.maxsize(width = self.Constants.width, height = self.Constants.height)
         self.minsize(width = self.Constants.width, height = self.Constants.height)
         self.__configure_grid()
-        self.__configure_UI(action = action)
+        self.__configure_UI(action = action, text = weather_text)
 
     def __configure_grid(self):
         self.grid_columnconfigure(0, minsize = 400)
@@ -28,8 +28,8 @@ class MainView(Tk):
         self.__canvas = Canvas(self, width=400, height=500, bg=self.Constants.bg)
         self.__canvas.grid(column=0)
 
-    def __configure_UI(self, action = None):
-        ButtonsMenu(self.__canvas)
+    def __configure_UI(self, action = None, text = None):
+        ButtonsMenu(self.__canvas, text)
         RoomsBottonsMenu(self, action = self.__did_tap)
 
     def __did_tap(self, sender, pin, status):

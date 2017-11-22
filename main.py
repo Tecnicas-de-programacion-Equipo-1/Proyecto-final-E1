@@ -1,4 +1,5 @@
 from Views.MainView import MainView
+from Models.WeatherManager import WeatherManager
 import serial
 from serial.tools import list_ports
 
@@ -7,7 +8,9 @@ class MainApp():
         for port in list_ports.comports(include_links=True):
             print(port.device, port.name, port.description)
 
-        self.__master = MainView(action = self.__on_off)
+        self.__weather = WeatherManager.get_weather_data()
+        self.__weather_text  = self.__weather.information
+        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text)
         self.__arduino = serial.Serial('COM8', 115200)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
 
