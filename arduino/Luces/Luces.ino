@@ -1,3 +1,6 @@
+#include <Servo.h>
+Servo servoMotor;
+int parking = 10;
 int led1 = 8;
 int led2 = 7;
 int led3 = 6;
@@ -15,6 +18,8 @@ int state7 = 0;
 
 void setup() {
    Serial.begin(115200);
+   servoMotor.attach(parking);
+   servoMotor.write(0);
    pinMode(led1, OUTPUT);
    digitalWrite(led1, LOW);
    pinMode(led2, OUTPUT);
@@ -29,6 +34,9 @@ void setup() {
    digitalWrite(led6, LOW);
    pinMode(led7, OUTPUT);
    digitalWrite(led7, LOW);
+   
+   servoMotor.attach(parking);
+   servoMotor.write(0);
 }
 
 void loop() { }
@@ -36,6 +44,10 @@ void loop() { }
 void serialEvent() {
     char inChar = (char)Serial.read();
     switch (inChar) {
+      case '9':
+        openParking();
+        break;
+        
       case '8':
         if (state1 == 0){
           state1 = 1;
@@ -98,6 +110,9 @@ void serialEvent() {
           state7 = 0;
           }
         digitalWrite(led7, state7);
+        break;
+      case '1':
+        CloseParking();
         break;      
       case '0':
         state1 = 0;
@@ -118,5 +133,23 @@ void serialEvent() {
       default:
         break;
     }
+}
+
+void openParking()
+{
+  for (int index = 0; index < 180; index++)
+  {
+    servoMotor.write(index);
+    delay(10);
+  }
+}
+
+void CloseParking()
+{
+  for (int index = 180; index >0; index--)
+  {
+    servoMotor.write(index);
+    delay(10);
+  }
 }
 
