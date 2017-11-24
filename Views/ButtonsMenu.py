@@ -32,8 +32,9 @@ class ButtonsMenu():
         click = "<Button-1>"
 
 
-    def __init__(self, canvas, text):
+    def __init__(self, canvas, text, action_parking = None):
         self.__rooms = canvas
+        self.__action_parking = action_parking
         self.__weather_text = text
         self.__notifications_button = Button(font=self.Constants.font)
         self.__fan_button = Button(font=self.Constants.font)
@@ -58,11 +59,14 @@ class ButtonsMenu():
         for index, key in enumerate(self.Constants.additionals_buttons):
             x = self.Constants.additionals_buttons_positions[index-1][0]
             y = self.Constants.additionals_buttons_positions[index-1][1]
-            button = AdditionalButtons(key)
+            button = AdditionalButtons(key, action_parking = self.__did_tap_parking)
             button.position(x,y)
 
         self.__weather_label.place(x = 450, y = 50)
         self.__weather_label.config(text=self.__weather_text)
+
+    def __did_tap_parking(self, pin, status):
+        self.__action_parking(pin, status)
 
 
 

@@ -11,9 +11,10 @@ class MainView(Tk):
         width = 800
 
 
-    def __init__(self, action = None, weather_text = None):
+    def __init__(self, action = None, weather_text = None, action_parking = None):
         super().__init__()
         self.__action=action
+        self.__action_parking = action_parking
         self.title(self.Constants.title)
         self.configure(bg = self.Constants.bg)
         self.maxsize(width = self.Constants.width, height = self.Constants.height)
@@ -29,11 +30,14 @@ class MainView(Tk):
         self.__canvas.grid(column=0)
 
     def __configure_UI(self, action = None, text = None):
-        ButtonsMenu(self.__canvas, text)
+        ButtonsMenu(self.__canvas, text, action_parking = self.__did_tap_parking)
         RoomsBottonsMenu(self, action = self.__did_tap)
 
     def __did_tap(self, sender, pin, status):
         self.__action(sender, pin, status)
+
+    def __did_tap_parking(self, pin, status):
+        self.__action_parking(pin, status)
 
 
 
