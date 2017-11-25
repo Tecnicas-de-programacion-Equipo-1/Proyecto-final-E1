@@ -32,8 +32,8 @@ class MainView(Tk):
         ButtonsMenu(self.__canvas, text)
         RoomsBottonsMenu(self, action = self.__did_tap)
 
-    def __did_tap(self, sender, pin, status):
-        self.__action(sender, pin, status)
+    def __did_tap(self, sender, code, status):
+        self.__action(sender, code, status)
 
 
 

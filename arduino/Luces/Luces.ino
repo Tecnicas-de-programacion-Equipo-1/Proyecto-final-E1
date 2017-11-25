@@ -5,13 +5,7 @@ int led4 = 5;
 int led5 = 4;
 int led6 = 3;
 int led7 = 2;
-int state1 = 0;
-int state2 = 0;
-int state3 = 0;
-int state4 = 0;
-int state5 = 0;
-int state6 = 0;
-int state7 = 0;
+int state = 0;
 
 void setup() {
    Serial.begin(115200);
@@ -34,86 +28,40 @@ void setup() {
 void loop() { }
 
 void serialEvent() {
-    char inChar = (char)Serial.read();
+    String inString = (String)Serial.readString();
+    char inChar = char(inString[inString.length()-1]);
+    state = int(inString[0]);
     switch (inChar) {
-      case '8':
-        if (state1 == 0){
-          state1 = 1;
-          }
-          else {
-          state1 = 0;
-          }
-        digitalWrite(led1, state1);
+      case 'F':
+        digitalWrite(led1, state);
         break;
-      case '7':
-        if (state2 == 0){
-          state2 = 1;
-          }
-          else {
-          state2 = 0;
-          }
-        digitalWrite(led2, state2);
+      case 'C':
+        digitalWrite(led2, state);
         break;
-      case '6':
-        if (state3 == 0){
-          state3 = 1;
-          }
-          else {
-          state3 = 0;
-          }
-        digitalWrite(led3, state3);
+      case 'A':
+        digitalWrite(led3, state);
         break;
-      case '5':
-        if (state4 == 0){
-          state4 = 1;
-          }
-          else {
-          state4 = 0;
-          }
-        digitalWrite(led4, state4);
+      case 'B':
+        digitalWrite(led4, state);
         break;
-      case '4':
-        if (state5 == 0){
-          state5 = 1;
-          }
-          else {
-          state5 = 0;
-          }
-        digitalWrite(led5, state5);
+      case 'E':
+        digitalWrite(led5, state);
         break;
-      case '3':
-        if (state6 == 0){
-          state6 = 1;
-          }
-          else {
-          state6 = 0;
-          }
-        digitalWrite(led6, state6);
+      case 'G':
+        digitalWrite(led6, state);
         break;
-      case '2':
-        if (state7 == 0){
-          state7 = 1;
-          }
-          else {
-          state7 = 0;
-          }
-        digitalWrite(led7, state7);
+      case 'D':
+        digitalWrite(led7, state);
         break;      
-      case '0':
-        state1 = 0;
-        state2 = 0;
-        state3 = 0;
-        state4 = 0;
-        state5 = 0;
-        state6 = 0;
-        state7 = 0;
-        digitalWrite(led1, state1);
-        digitalWrite(led2, state2);
-        digitalWrite(led3, state3);
-        digitalWrite(led4, state4);
-        digitalWrite(led5, state5);
-        digitalWrite(led6, state6);
-        digitalWrite(led7, state7);
+      case 'H':
+        state = 0;
+        digitalWrite(led1, state);
+        digitalWrite(led2, state);
+        digitalWrite(led3, state);
+        digitalWrite(led4, state);
+        digitalWrite(led5, state);
+        digitalWrite(led6, state);
+        digitalWrite(led7, state);
         break;      
       default:
         break;

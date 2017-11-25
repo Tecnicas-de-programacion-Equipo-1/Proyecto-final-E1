@@ -17,9 +17,9 @@ class MainApp():
     def run(self):
         self.__master.mainloop()
 
-    def __on_off(self, sender, pin, state):
-        pin = str(pin).encode('ascii')
-        self.__arduino.write(pin)
+    def __on_off(self, sender, code, state):
+        data = ("1" + code) if state else ("0" + code)
+        self.__arduino.write(data)
 
     def __on_closing(self):
         self.__arduino.close()
