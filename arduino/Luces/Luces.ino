@@ -55,7 +55,6 @@ char Comp(char* Flag){
 void loop()
 {
   sendtemperatureData();
-  sendOthertemperatureData();
  if (Comp("Abre puerta")== 0){
   servoMotor.write(90);
  }
@@ -129,15 +128,12 @@ void loop()
  }
 }  
 
-void sendOthertemperatureData(){
+void sendtemperatureData(){
+   int chk = DHT.read11(DHT11_PIN);
+  delay(200);
   int temp = other_dht.read11(DHT11_PIN);
+  delay(200);
+  Serial.print(DHT.temperature);
   Serial.print(",");
   Serial.println(other_dht.temperature);
-  delay(200);
-  }
-
-void sendtemperatureData(){
-  int chk = DHT.read11(DHT11_PIN);
-  Serial.print(DHT.temperature);
-  delay(200);
   }
