@@ -1,20 +1,18 @@
 from tkinter import Button
 
-class ControlParking():
+class ControlParking(Button):
     class Constants:
-        pin_parking = 9
+        on = "Abre puerta"
+        off = "Cierra puerta"
 
-    class event:
+    class Event:
         click = "<Button-1>"
 
-    def __init__(self, action = None):
+    def __init__(self, status, action_parking = None):
         super().__init__()
-        self.__action = action
-        self.__pin_parking = self.Constants.pin_parking
-        self.__state = False
-        self.bind(self.event.click, self.__did_tap)
-
-    def __did_tap(self):
-        if self.__action is None: return
-        self.__state = not self.__state
-        self.__action(self.__pin_parking, self.__state)
+        self.__action_parking = action_parking
+        self.__status = status
+        if self.__status:
+            self.__action_parking(self.Constants.on, self.__status)
+        else:
+            self.__action_parking(self.Constants.off, self.__status)
