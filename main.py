@@ -29,7 +29,7 @@ class MainApp():
     def __handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
         value = clean_values[0]
-        print(value)
+        self.__master.catch_values_sensor(value)
 
     def __update_clock(self):
         data = self.__arduino.readline().decode()
