@@ -1,6 +1,12 @@
 #include <Servo.h>
+#include <dht.h>
 Servo servoMotor;
 int servo_one = 10;
+
+dht DHT;
+#define DHT11_PIN -11
+dht other_dht;
+#define DHT11_PIN 12
 
 char list_string[20]; 
 char inChar=-1; 
@@ -48,6 +54,8 @@ char Comp(char* Flag){
 
 void loop()
 {
+  sendtemperatureData();
+  sendOthertemperatureData();
  if (Comp("Abre puerta")== 0){
   servoMotor.write(90);
  }
@@ -120,3 +128,16 @@ void loop()
   digitalWrite(2,LOW);
  }
 }  
+
+void sendOthertemperatureData(){
+  int temp = other_dht.read11(DHT11_PIN);
+  Serial.print(",");
+  Serial.println(other_dht.temperature);
+  delay(200);
+  }
+
+void sendtemperatureData(){
+  int chk = DHT.read11(DHT11_PIN);
+  Serial.print(DHT.temperature);
+  delay(200);
+  }
