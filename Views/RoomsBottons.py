@@ -11,11 +11,11 @@ class RoomsBottons(Button):
     class Event:
         click = "<Button-1>"
 
-    def __init__(self, master, key, pin, action = None):
+    def __init__(self, master, key, code, action = None):
         super().__init__(master)
         self.__action = action
         self.key = key
-        self.pin = pin
+        self.code = code
         self.__state = False
 
         self.configure(text=self.key)
@@ -32,7 +32,7 @@ class RoomsBottons(Button):
     def __did_tap(self, event):
         if self.__action is None: return
         self.__state = not self.__state
-        self.__action(self.key, self.pin,  self.__state)
+        self.__action(self.key, self.code,  self.__state)
         foreground = self.Constants.letter_color
         if self.key == "Apagar \ntodo":
             bg = self.Constants.room_color_off
