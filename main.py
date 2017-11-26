@@ -9,7 +9,7 @@ class MainApp():
             print(port.device, port.name, port.description)
         self.__weather = WeatherManager.get_weather_data()
         self.__weather_text  = self.__weather.information
-        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text)
+        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_parking = self.__on__off_parking)
         self.__arduino = serial.Serial('COM7', 115200)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
 
@@ -19,6 +19,10 @@ class MainApp():
     def __on_off(self, sender, code, state):
         data = ("1" + code) if state else ("0" + code)
         data = str(data).encode('ascii')
+        self.__arduino.write(data)
+
+    def __on__off_parking(self, on_off, status):
+        data = str(on_off).encode("ascii")
         self.__arduino.write(data)
 
     def __on_closing(self):

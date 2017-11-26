@@ -1,122 +1,122 @@
-int led1 = 8;
-int led2 = 7;
-int led3 = 6;
-int led4 = 5;
-int led5 = 4;
-int led6 = 3;
-int led7 = 2;
-int state1 = 0;
-int state2 = 0;
-int state3 = 0;
-int state4 = 0;
-int state5 = 0;
-int state6 = 0;
-int state7 = 0;
+#include <Servo.h>
+Servo servoMotor;
+int servo_one = 10;
 
-void setup() {
-   Serial.begin(115200);
-   pinMode(led1, OUTPUT);
-   digitalWrite(led1, LOW);
-   pinMode(led2, OUTPUT);
-   digitalWrite(led2, LOW);
-   pinMode(led3, OUTPUT);
-   digitalWrite(led3, LOW);
-   pinMode(led4, OUTPUT);
-   digitalWrite(led4, LOW);
-   pinMode(led5, OUTPUT);
-   digitalWrite(led5, LOW);
-   pinMode(led6, OUTPUT);
-   digitalWrite(led6, LOW);
-   pinMode(led7, OUTPUT);
-   digitalWrite(led7, LOW);
+char list_string[20]; 
+char inChar=-1; 
+byte index = 0;
+
+void setup(){
+  
+  servoMotor.attach(10);
+  servoMotor.write(0);
+  Serial.begin(115200);
+  pinMode(8,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(2,OUTPUT);
 }
 
-void loop() { }
+char Comp(char* Flag){
 
-void serialEvent() {
-    char inChar = (char)Serial.read();
-    switch (inChar) {
-      case '8':
-        if (state1 == 0){
-          state1 = 1;
-          }
-          else {
-          state1 = 0;
-          }
-        digitalWrite(led1, state1);
-        break;
-      case '7':
-        if (state2 == 0){
-          state2 = 1;
-          }
-          else {
-          state2 = 0;
-          }
-        digitalWrite(led2, state2);
-        break;
-      case '6':
-        if (state3 == 0){
-          state3 = 1;
-          }
-          else {
-          state3 = 0;
-          }
-        digitalWrite(led3, state3);
-        break;
-      case '5':
-        if (state4 == 0){
-          state4 = 1;
-          }
-          else {
-          state4 = 0;
-          }
-        digitalWrite(led4, state4);
-        break;
-      case '4':
-        if (state5 == 0){
-          state5 = 1;
-          }
-          else {
-          state5 = 0;
-          }
-        digitalWrite(led5, state5);
-        break;
-      case '3':
-        if (state6 == 0){
-          state6 = 1;
-          }
-          else {
-          state6 = 0;
-          }
-        digitalWrite(led6, state6);
-        break;
-      case '2':
-        if (state7 == 0){
-          state7 = 1;
-          }
-          else {
-          state7 = 0;
-          }
-        digitalWrite(led7, state7);
-        break;      
-      case '0':
-        state1 = 0;
-        state2 = 0;
-        state3 = 0;
-        state4 = 0;
-        state5 = 0;
-        state6 = 0;
-        state7 = 0;
-        digitalWrite(led1, state1);
-        digitalWrite(led2, state2);
-        digitalWrite(led3, state3);
-        digitalWrite(led4, state4);
-        digitalWrite(led5, state5);
-        digitalWrite(led6, state6);
-        digitalWrite(led7, state7);
-        break;      
-      default:
-        break;
-    }
+ while(Serial.available() > 0)
+ {
+   if(index < 19) 
+   {
+     inChar = Serial.read();
+     list_string[index] = inChar; 
+     index++; 
+     list_string[index] = '\0'; 
+   }
+ }
+
+ if(strcmp(list_string,Flag) == 0){
+   for(int i=0;i<19;i++){
+     list_string[i]=0;
+   }
+   index=0;
+   return(0);
+ }
+ else{
+   return(1);
+ }
 }
 
+
+void loop()
+{
+ if (Comp("Abre puerta")== 0){
+  servoMotor.write(90);
+ }
+ else if (Comp("Cierra puerta") == 0){
+  servoMotor.write(0);
+ }
+ else if (Comp("1F") == 0){
+  digitalWrite(8,HIGH);
+  
+ }
+ else if (Comp("0F") == 0){
+  digitalWrite(8,LOW);
+ }
+ 
+ else if (Comp("1C") == 0){
+  digitalWrite(7,HIGH);
+ }
+ 
+ else if (Comp("0C") == 0){
+  digitalWrite(7,LOW);
+ }
+ 
+ else if (Comp("1A") == 0){
+  digitalWrite(6,HIGH);
+ }
+ 
+ else if (Comp("0A") == 0){
+  digitalWrite(6,LOW);
+ }
+ 
+ else if (Comp("1B") == 0){
+  digitalWrite(5,HIGH);
+ }
+ 
+ else if (Comp("0B") == 0){
+  digitalWrite(5,LOW);
+ }
+ 
+ else if (Comp("1E") == 0){
+  digitalWrite(4,HIGH);
+ }
+ 
+ else if (Comp("0E") == 0){
+  digitalWrite(4,LOW);
+ }
+ 
+ else if (Comp("1G") == 0){
+  digitalWrite(3,HIGH);
+ }
+ 
+ else if (Comp("0G") == 0){
+  digitalWrite(3,LOW);
+ }
+ 
+ else if (Comp("1D") == 0){
+  digitalWrite(2,HIGH);
+ }
+ 
+ else if (Comp("0D") == 0){
+  digitalWrite(2,LOW);
+ }
+ 
+ else if (Comp("1H")== 0){
+  digitalWrite(8,LOW);
+  digitalWrite(7,LOW);
+  digitalWrite(6,LOW);
+  digitalWrite(5,LOW);
+  digitalWrite(4,LOW);
+  digitalWrite(3,LOW);
+  digitalWrite(2,LOW);
+ }
+}  
