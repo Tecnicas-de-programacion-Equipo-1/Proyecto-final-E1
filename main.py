@@ -31,12 +31,7 @@ class MainApp():
         clean_values = data.strip(' \n\r').split(",")
         temperature1 = clean_values[0]
         temperature2 = clean_values[1]
-        print ("1:",temperature1)
-        print ("2:",temperature2)
-
-        # self.__master.update_bar(temperature1)
-        # self.__master.update_text(temperature2)
-
+       
 
     def __home_temperature(self):
         temperature_data = self.__arduino.readline().decode()
