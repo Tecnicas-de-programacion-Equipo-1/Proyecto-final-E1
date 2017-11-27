@@ -8,6 +8,7 @@ class AdditionalButtons(Button):
         green = "#2F942C"
         font = "Rockwell"
         parking = "Puertas Estacionamiento"
+        overrelief = "sunken"
 
 
     class Event:
@@ -17,7 +18,7 @@ class AdditionalButtons(Button):
         super().__init__()
         self.__action_parking = action_parking
         self.__key = key
-        self.__button = Button(text = key)
+        self.__button = Button(text = key, overrelief = self.Constants.overrelief)
         self.__state = False
 
         self.__button.configure(font = self.Constants.font)

@@ -6,6 +6,7 @@ class RoomsBottons(Button):
         room_color_off = "#848689"
         room_color_on = "#F7DC6F"
         letter_color = '#202020'
+        overrelief = "sunken"
         font = "Rockwell"
         all_off = "Apagar \ntodo"
 
@@ -19,7 +20,7 @@ class RoomsBottons(Button):
         self.code = code
         self.__state = False
 
-        self.configure(text=self.key)
+        self.configure(text=self.key, overrelief = self.Constants.overrelief)
         self.configure(font=self.Constants.font)
         bg = self.Constants.room_color_on if self.__state else self.Constants.room_color_off
         foreground = self.Constants.letter_color
