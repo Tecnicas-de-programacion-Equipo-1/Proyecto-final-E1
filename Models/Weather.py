@@ -9,13 +9,8 @@ class Weather:
     @property
     def information(self):
         temperature = float(self.__temp) - self.Constants.kelvin
-        info = """MX,{}    -   {}\nTemperatura: {:.2f}°C """.format(self.__country, self.__weather, temperature)
+        info = "Ciudad: {} \nTemperatura: {:.2f}°C \nDescripcion: {} ".format(self.__country, temperature , self.__weather)
         return info
-
-    @property
-    def temperature(self):
-        temperature = float(self.__temp) - self.Constants.kelvin
-        return temperature
 
     def __repr__(self):
         return "{}, {}".format(self.__name, self.__date)
