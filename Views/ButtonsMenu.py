@@ -19,8 +19,8 @@ class ButtonsMenu():
         black = "black"
         center = N + S + E + W
         font = "Rockwell"
-        additionals_buttons = ["Jardin", "Ventiladores", "Puertas Estacionamiento"]
-        additionals_buttons_positions = [[550, 275], [510, 350], [575, 425]]
+        additionals_buttons = ["Notificaciones", "Control - Ventiladores", "Ventilador - Sala", "ventilador - Recamara",  "Puertas Estacionamiento"]
+        additionals_buttons_positions = [[550, 210], [520, 265], [540,320], [520,375],[515, 425]]
         garden_text = "Jardin"
         weather_text = "Informacion del Clima"
         bg = "#505F80"
@@ -50,12 +50,12 @@ class ButtonsMenu():
 
     def __create_buttons(self):
         for index, key in enumerate(self.Constants.additionals_buttons):
-            x = self.Constants.additionals_buttons_positions[index-1][0]
-            y = self.Constants.additionals_buttons_positions[index-1][1]
+            x = self.Constants.additionals_buttons_positions[index][0]
+            y = self.Constants.additionals_buttons_positions[index][1]
             button = AdditionalButtons(key, action_parking = self.__tap_parking)
             button.position(x,y)
 
-        self.__weather_label.place(x = 450, y = 50)
+        self.__weather_label.place(x = 450, y = 10)
         self.__weather_label.config(text=self.__weather_text)
 
     def __tap_parking(self, on__off, status):
