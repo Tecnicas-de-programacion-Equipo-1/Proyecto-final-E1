@@ -14,7 +14,7 @@ class ButtonsMenu():
         service_room_points = [(300, 0), (300, 200), (400, 200), (400, 0)]
         red = "#E54365"
         green = "#2F942C"
-        room_color = "#6E6E6E"
+        room_color = "#DFA976"
         weather_color = "#AFB5C2"
         black = "black"
         center = N + S + E + W

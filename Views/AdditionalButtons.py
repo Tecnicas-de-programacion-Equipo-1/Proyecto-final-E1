@@ -4,8 +4,8 @@ from Views.ControlParking import ControlParking
 class AdditionalButtons(Button):
     class Constants:
         center = N+S+W+E
-        red = "#E54365"
-        green = "#2F942C"
+        red = "#F17878"
+        green = "#5BDA72"
         font = "Rockwell"
         parking = "Puertas Estacionamiento"
         overrelief = "sunken"

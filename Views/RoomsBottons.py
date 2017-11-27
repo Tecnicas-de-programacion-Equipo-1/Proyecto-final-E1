@@ -3,7 +3,7 @@ from tkinter import Button, N, S, E, W
 class RoomsBottons(Button):
     class Constants:
         center = N + S + W + E
-        room_color_off = "#848689"
+        room_color_off = "#CA8F59"
         room_color_on = "#F7DC6F"
         letter_color = '#202020'
         overrelief = "sunken"
