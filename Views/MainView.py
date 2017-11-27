@@ -5,7 +5,6 @@ from Views.RoomsBottonsMenu import RoomsBottonsMenu
 class MainView(Tk):
     class Constants:
         title = "Casa Inteligente"
-        color_house = "#E44E1E"
         bg = "#505F80"
         height = 500
         width = 800

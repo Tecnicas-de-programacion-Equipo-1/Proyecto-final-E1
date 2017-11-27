@@ -6,7 +6,7 @@ from Models.JsonManager import JsonManager
 
 class WeatherManager:
     class Constants:
-        base_url = "http://api.openweathermap.org/data/2.5/weather?q=Mexico,MX&appid="
+        base_url = "http://api.openweathermap.org/data/2.5/weather?q=Coyoacan,MX&appid="
         env_file = "Env-example/env_example"
 
 

@@ -7,6 +7,7 @@ class RoomsBottons(Button):
         room_color_on = "#F7DC6F"
         letter_color = '#202020'
         font = "Rockwell"
+        all_off = "Apagar \ntodo"
 
     class Event:
         click = "<Button-1>"
@@ -34,7 +35,7 @@ class RoomsBottons(Button):
         self.__state = not self.__state
         self.__action(self.key, self.code,  self.__state)
         foreground = self.Constants.letter_color
-        if self.key == "Apagar \ntodo":
+        if self.key == self.Constants.all_off:
             bg = self.Constants.room_color_off
         else:
             bg = self.Constants.room_color_on if self.__state else self.Constants.room_color_off

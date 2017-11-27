@@ -7,6 +7,7 @@ class AdditionalButtons(Button):
         red = "#E54365"
         green = "#2F942C"
         font = "Rockwell"
+        parking = "Puertas Estacionamiento"
 
 
     class Event:
@@ -30,7 +31,7 @@ class AdditionalButtons(Button):
 
     def __did_tap(self, event):
         self.__state = not self.__state
-        if self.__key == "Puertas Estacionamiento":
+        if self.__key == self.Constants.parking:
             ControlParking(self.__state, action_parking = self.__tap_parking)
         bg = self.Constants.green if self.__state else self.Constants.red
         self.__button.configure(bg=bg)

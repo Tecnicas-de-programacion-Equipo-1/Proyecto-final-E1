@@ -10,7 +10,7 @@ class MainApp():
         self.__weather = WeatherManager.get_weather_data()
         self.__weather_text  = self.__weather.information
         self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_parking = self.__on__off_parking)
-        self.__arduino = serial.Serial('COM7', 115200)
+        self.__arduino = serial.Serial('COM3', 115200)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
 
     def run(self):
