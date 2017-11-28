@@ -1,6 +1,6 @@
 from Views.MainView import MainView
 from Models.WeatherManager import WeatherManager
-from Views.DataArduino import DataArduino
+from Models.DataArduino import DataArduino
 
 class MainApp():
     def __init__(self):
