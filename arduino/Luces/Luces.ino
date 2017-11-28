@@ -19,6 +19,8 @@ void setup(){
   servoMotor.attach(10);
   servoMotor.write(0);
   Serial.begin(115200);
+  pinMode(11,OUTPUT);
+  pinMode(9,OUTPUT);
   pinMode(8,OUTPUT);
   pinMode(7,OUTPUT);
   pinMode(6,OUTPUT);
@@ -165,6 +167,22 @@ void loop()
    digitalWrite(4,LOW);
    digitalWrite(3,LOW);
    digitalWrite(2,LOW);
+  }
+  else if (Comp("fan_one_on") == 0){
+   digitalWrite(11,HIGH);
+  }
+  else if (Comp("fan_one_off") == 0){
+   digitalWrite(11,LOW);
+  }
+  else if (Comp("fan_two_on") == 0){
+   digitalWrite(9,HIGH);
+  }
+  else if (Comp("fan_two_off") == 0){
+   digitalWrite(9,LOW);
+  }
+  else if (Comp("all_fans_off") == 0){
+   digitalWrite(9,LOW);
+   digitalWrite(11,LOW);
   }
 }  
 
