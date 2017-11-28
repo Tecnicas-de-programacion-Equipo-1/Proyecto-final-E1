@@ -1,5 +1,10 @@
 #include <Servo.h>
+#include <dht.h>
 Servo servoMotor;
+dht DHT;
+#define DHT11_PIN A0
+dht other_dht;
+#define DHT11_PIN A1
 int servo_one = 10;
 int Echo =12;
 int Trigger = 13;
@@ -52,23 +57,36 @@ void calculateDistance(int tiempo){
   distancia = (tiempo/2)/29.1;
   if (distancia<0 || distancia > 50){
     distancia = 0;
-    sendData(distancia);
+    sendtemperatureData(distancia);
   }
   else{
-    sendData(distancia);
+    sendtemperatureData(distancia);
   }
 }
 
-void sendData(int distancia){
-  Serial.println(distancia);
+void sendData(int distancia, int temp_one, int temp_two){
+  Serial.print(distancia);
+  Serial.print(",");
+  Serial.print(temp_one);
+  Serial.print(",");
+  Serial.println(temp_two);
   delay(50);
 }
 
+void sendtemperatureData(int distance){
+  int chk = DHT.read11(DHT11_PIN);
+  delay(200);
+  int temp = other_dht.read11(DHT11_PIN);
+  delay(200);
+  int temp_one =DHT.temperature;
+  int temp_two = other_dht.temperature;
+  sendData(distance,temp_one, temp_two);
+  
+  }
 
 
 void loop()
 {
-
   digitalWrite(Trigger,LOW);
   delayMicroseconds(5);
   digitalWrite(Trigger,HIGH);
