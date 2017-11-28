@@ -10,9 +10,18 @@ class MainApp():
         self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_parking = self.__on__off_parking)
         DataArduino.Arduino(self)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
+        self.__MotionSensor()
 
     def run(self):
         self.__master.mainloop()
+
+    def __MotionSensor(self):
+        data = DataArduino.update_clock(self)
+        DataArduino.handle_data(self, data)
+        self.__master.after(1,self.__MotionSensor)
+
+    def __funtion_repeat(self):
+        self.__master.after(1, DataArduino.update_clock(self))
 
     def __on_off(self, sender, code, state):
         DataArduino.on_off(self,sender,code,state)

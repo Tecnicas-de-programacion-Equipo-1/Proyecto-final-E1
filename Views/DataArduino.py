@@ -22,6 +22,15 @@ class DataArduino():
         data = str(on_off).encode("ascii")
         self.__arduino.write(data)
 
+    def handle_data(self, data):
+        clean_values = data.strip(' \n\r').split(",")
+        value = clean_values[0]
+        MainView.catch_values_sensor(self, value)
+
+    def update_clock(self):
+        data = self.__arduino.readline().decode()
+        return data
+
     def on_closing(self, master):
         self.__arduino.close()
         master.destroy()
