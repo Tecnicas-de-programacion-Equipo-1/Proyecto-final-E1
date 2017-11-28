@@ -12,6 +12,7 @@ class MainApp():
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
         self.__MotionSensor()
 
+
     def run(self):
         self.__master.mainloop()
 
