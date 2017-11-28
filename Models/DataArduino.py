@@ -11,7 +11,7 @@ class DataArduino():
             print(port.device, port.name, port.description)
 
     def Arduino(self):
-        self.__arduino = serial.Serial('COM7', 115200)
+        self.__arduino = serial.Serial('COM5', 115200)
 
     def on_off(self, sender, code, state):
         data = ("1" + code) if state else ("0" + code)
@@ -25,6 +25,8 @@ class DataArduino():
     def handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
         value = clean_values[0]
+        temp_one = clean_values[1]
+        temp_two = clean_values[2]
         MainView.catch_values_sensor(self, value)
 
     def update_clock(self):
