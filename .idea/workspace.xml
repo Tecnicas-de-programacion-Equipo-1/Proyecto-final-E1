@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b2501a1-1b65-4e69-bca4-01ac35e0701f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/git" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Proyecto-final-E1.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/test_dataArduino.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Views/MotionSensor.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Env-example/env_example.json" afterPath="$PROJECT_DIR$/Env-example/env_example.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Models/DataArduino.py" afterPath="$PROJECT_DIR$/Models/DataArduino.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/MainView.py" afterPath="$PROJECT_DIR$/Views/MainView.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="env_example.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="env_example.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Env-example/env_example.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+              <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -95,7 +83,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_dataArduino.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_dataArduino.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/test_dataArduino.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -132,11 +120,11 @@
       <list>
         <option value="$PROJECT_DIR$/Views/MainView.py" />
         <option value="$PROJECT_DIR$/Views/MotionSensor.py" />
-        <option value="$PROJECT_DIR$/Env-example/env_example.json" />
         <option value="$PROJECT_DIR$/Models/AverageSensor.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Models/DataArduino.py" />
         <option value="$PROJECT_DIR$/Models/test_dataArduino.py" />
+        <option value="$PROJECT_DIR$/Env-example/env_example.json" />
       </list>
     </option>
   </component>
@@ -442,14 +430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Env-example/env_example.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/ControlParking.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -503,6 +483,14 @@
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Env-example/env_example.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
