@@ -1,7 +1,6 @@
 from tkinter import Tk, Canvas
 from Views.ButtonsMenu import ButtonsMenu
 from Views.RoomsBottonsMenu import RoomsBottonsMenu
-from Views.MotionSensor import MotionSensor
 
 class MainView(Tk):
     class Constants:
@@ -38,5 +37,4 @@ class MainView(Tk):
     def __did_tap_parking(self, on__off, status):
         self.__action_parking(on__off,status)
 
-    def catch_values_sensor(self, value):
-        MotionSensor(value)
+
