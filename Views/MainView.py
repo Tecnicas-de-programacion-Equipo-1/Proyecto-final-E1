@@ -28,13 +28,13 @@ class MainView(Tk):
         self.__canvas.grid(column=0)
 
     def __configure_UI(self, action = None, text = None, action_parking = None):
-        ButtonsMenu(self.__canvas, text, action_parking = self.__did_tap_parking)
+        ButtonsMenu(self.__canvas, text, action = self.__did_tap_additional_buttons)
         RoomsBottonsMenu(self, action = self.__did_tap)
 
     def __did_tap(self, sender, code, status):
         self.__action(sender, code, status)
 
-    def __did_tap_parking(self, on__off, status):
-        self.__action_parking(on__off,status)
+    def __did_tap_additional_buttons(self, on__off, status):
+        self.__action_additional_buttons(on__off,status)
 
 

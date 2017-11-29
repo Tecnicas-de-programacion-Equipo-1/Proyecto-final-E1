@@ -77,10 +77,10 @@ void loop()
   tiempo = pulseIn(Echo,HIGH);
   calculateDistance(tiempo);
   
-  if (Comp("Abre puerta")== 0){
+  if (Comp("Puertas Estacionamiento True")== 0){
    servoMotor.write(90);
   }
-  else if (Comp("Cierra puerta") == 0){
+  else if (Comp("Puertas Estacionamiento False") == 0){
    servoMotor.write(0);
   }
   else if (Comp("1F") == 0){
