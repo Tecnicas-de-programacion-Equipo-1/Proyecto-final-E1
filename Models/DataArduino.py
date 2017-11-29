@@ -22,6 +22,10 @@ class DataArduino():
         data = str(on_off).encode("ascii")
         self.__arduino.write(data)
 
+    def on_off_fans(self,function_of_fans, fan_state):
+        data = str(fan_state).encode("ascii")
+        self.__arduino.write(data)
+
     def handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
         value = clean_values[0]

@@ -7,7 +7,7 @@ class MainApp():
         DataArduino.read_port(self)
         self.__weather = WeatherManager.get_weather_data()
         self.__weather_text  = self.__weather.information
-        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_parking = self.__on__off_parking)
+        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_parking = self.__on__off_parking, fan_action = self. __on_off_fan)
         DataArduino.Arduino(self)
         self.__master.protocol("WM_DELETE_WINDOW", self.__on_closing)
         self.__MotionSensor()
@@ -28,6 +28,9 @@ class MainApp():
 
     def __on__off_parking(self, on_off, status):
         DataArduino.on__off_parking(self,on_off,status)
+
+    def __on_off_fan(self, fans_state, fan_code):
+        DataArduino.on_off_fans(self, fans_state, fan_code)
 
     def __on_closing(self):
         DataArduino.on_closing(self, self.__master)

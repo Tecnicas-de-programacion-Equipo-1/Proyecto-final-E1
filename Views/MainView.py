@@ -10,10 +10,11 @@ class MainView(Tk):
         height = 500
         width = 800
 
-    def __init__(self, action = None, weather_text = None, action_parking = None):
+    def __init__(self, action = None, weather_text = None, action_parking = None, fan_action = None):
         super().__init__()
         self.__action=action
         self.__action_parking = action_parking
+        self.__fan_action = fan_action
         self.title(self.Constants.title)
         self.configure(bg = self.Constants.bg)
         self.maxsize(width = self.Constants.width, height = self.Constants.height)
@@ -29,7 +30,7 @@ class MainView(Tk):
         self.__canvas.grid(column=0)
 
     def __configure_UI(self, action = None, text = None, action_parking = None):
-        ButtonsMenu(self.__canvas, text, action_parking = self.__did_tap_parking)
+        ButtonsMenu(self.__canvas, text, action_parking = self.__did_tap_parking, fans_action = self.__did_tap_fans)
         RoomsBottonsMenu(self, action = self.__did_tap)
 
     def __did_tap(self, sender, code, status):
@@ -37,6 +38,9 @@ class MainView(Tk):
 
     def __did_tap_parking(self, on__off, status):
         self.__action_parking(on__off,status)
+
+    def __did_tap_fans(self, fans_state,fan_code):
+        self.__fan_action(fans_state, fan_code)
 
     def catch_values_sensor(self, value):
         MotionSensor(value)
