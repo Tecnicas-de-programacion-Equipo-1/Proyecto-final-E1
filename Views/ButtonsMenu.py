@@ -24,6 +24,7 @@ class ButtonsMenu():
         garden_text = "Jardin"
         weather_text = "Informacion del Clima"
         bg = "#505F80"
+        code_for_others = ["not", "all_fans", "fan_two", "fan_one", "parking"]
 
     class Event:
         click = "<Button-1>"
@@ -53,7 +54,7 @@ class ButtonsMenu():
         for index, key in enumerate(self.Constants.additionals_buttons):
             x = self.Constants.additionals_buttons_positions[index][0]
             y = self.Constants.additionals_buttons_positions[index][1]
-            button = AdditionalButtons(key, action_parking = self.__tap_parking, fans_action = self.__tap_fans)
+            button = AdditionalButtons(key, self.Constants.code_for_others[index],action_parking = self.__tap_parking, fans_action = self.__tap_fans)
             button.position(x,y)
 
         self.__weather_label.place(x = 450, y = 10)
@@ -62,8 +63,8 @@ class ButtonsMenu():
     def __tap_parking(self, on__off, status):
         self.__action_parking(on__off, status)
 
-    def __tap_fans(self, fans_state, fan_code ):
-        self.__fans_action(fans_state, fan_code)
+    def __tap_fans(self, fan_state, fan_code ):
+        self.__fans_action(fan_state,fan_code)
 
 
 

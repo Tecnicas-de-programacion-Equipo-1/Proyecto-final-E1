@@ -1,6 +1,5 @@
 from tkinter import Button, N, S, E, W
 from Views.ControlParking import ControlParking
-from Views.FansControl import FansControl
 
 class AdditionalButtons(Button):
     class Constants:
@@ -10,16 +9,19 @@ class AdditionalButtons(Button):
         font = "Rockwell"
         parking = "Puertas Estacionamiento"
         bedroom = "ventilador - Recamara"
+        livingroom = "Ventilador - Sala"
+        both_fans = "Control - Ventiladores"
         overrelief = "sunken"
 
 
     class Event:
         click = "<Button-1>"
 
-    def __init__(self,key, action_parking = None, fans_action = None):
+    def __init__(self,key, coed_for_others, action_parking = None, fans_action = None):
         super().__init__()
         self.__action_parking = action_parking
         self.__fans_action = fans_action
+        self.__code_for_others = coed_for_others
         self.__key = key
         self.__button = Button(text = key, overrelief = self.Constants.overrelief)
         self.__state = False
@@ -37,8 +39,8 @@ class AdditionalButtons(Button):
         self.__state = not self.__state
         if self.__key == self.Constants.parking:
             ControlParking(self.__state, action_parking = self.__tap_parking)
-        elif self.__key == self.Constants.bedroom:
-            FansControl (self.__state, fans_action =self.__tap_fans)
+
+        self.__fans_action(self.__state,self.__code_for_others)
 
         bg = self.Constants.green if self.__state else self.Constants.red
         self.__button.configure(bg=bg)
@@ -46,5 +48,3 @@ class AdditionalButtons(Button):
     def __tap_parking(self, on_off, status):
         self.__action_parking(on_off, status)
 
-    def __tap_fans(self, fans_state, fan_code):
-        self.__fans_action(fans_state, fan_code)

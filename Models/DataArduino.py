@@ -22,8 +22,9 @@ class DataArduino():
         data = str(on_off).encode("ascii")
         self.__arduino.write(data)
 
-    def on_off_fans(self,function_of_fans, fan_state):
-        data = str(fan_state).encode("ascii")
+    def on_off_fans(self,function_of_fans, bedroom_fan_state):
+        data = ( bedroom_fan_state + "_on") if function_of_fans else ( bedroom_fan_state + "_off" )
+        data = str(data).encode("ascii")
         self.__arduino.write(data)
 
     def handle_data(self, data):

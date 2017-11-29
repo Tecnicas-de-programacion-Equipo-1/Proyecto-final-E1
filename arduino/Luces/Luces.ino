@@ -184,6 +184,10 @@ void loop()
    digitalWrite(9,LOW);
    digitalWrite(11,LOW);
   }
+  else if (Comp("all_fans_on") == 0){
+   digitalWrite(9,HIGH);
+   digitalWrite(11,HIGH);
+  }
 }  
 
 
