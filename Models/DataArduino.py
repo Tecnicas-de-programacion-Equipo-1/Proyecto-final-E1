@@ -8,6 +8,8 @@ class DataArduino():
         self.__array_complete = False
         self.__array_values = []
         self.Arduino()
+        self.value_sensor = self.handle_data(self.update_clock())
+
 
     def read_port(self):
         for port in list_ports.comports(include_links=True):
@@ -23,12 +25,14 @@ class DataArduino():
         return data
 
     def on__off_parking(self, on_off, status):
-        data = str(on_off).encode("ascii")
+        data = "True" if status else "False"
+        data = str(data).encode("ascii")
         self.__arduino.write(data)
 
     def handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
         value = clean_values[0]
+        print(value)
         return value
 
     def update_clock(self):

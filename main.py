@@ -2,7 +2,6 @@ from Models.DataArduino import DataArduino
 from Models.WeatherManager import WeatherManager
 from Views.MainView import MainView
 
-
 class MainApp():
     class Constants:
         delete = "WM_DELETE_WINDOW"
@@ -10,7 +9,7 @@ class MainApp():
     def __init__(self):
         self.__weather = WeatherManager.get_weather_data()
         self.__weather_text  = self.__weather.information
-        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_parking = self.__on__off_parking)
+        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_additional_buttons = self.__on__off_additional_buttons)
         self.__Arduino = DataArduino()
         self.__master.protocol(self.Constants.delete, self.__on_closing)
         self.__MotionSensor()
@@ -21,17 +20,15 @@ class MainApp():
 
     def __MotionSensor(self):
         data = self.__Arduino.update_clock()
-        print(data)
+        self.__Arduino.handle_data(data)
         self.__master.after(1,self.__MotionSensor)
-
-    def __funtion_repeat(self):
-        self.__master.after(1, self.__Arduino.update_clock())
 
     def __on_off(self, sender, code, state):
         self.__Arduino.on_off(sender,code,state)
 
-    def __on__off_parking(self, on_off, status):
-        self.__Arduino.on__off_parking(on_off,status)
+    def __on__off_additional_buttons(self, on_off, status):
+        if (on_off == "Puertas Estacionamiento"):
+            self.__Arduino.on__off_parking(on_off,status)
 
     def __on_closing(self):
         self.__Arduino.on_closing(self.__master)

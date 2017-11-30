@@ -59,9 +59,7 @@ class ButtonsMenu():
         self.__weather_label.config(text=self.__weather_text)
 
     def __tap(self, on__off, status):
-        print(on__off, status)
-        if (on__off == self.Constants.additionals_buttons[4]):
-            self.__action(on__off, status)
+        self.__action(on__off, status)
 
 
 
