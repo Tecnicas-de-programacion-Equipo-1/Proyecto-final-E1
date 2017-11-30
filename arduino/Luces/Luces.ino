@@ -12,7 +12,7 @@ void setup(){
   pinMode(Echo,INPUT);
   pinMode(Trigger,OUTPUT);
   servoMotor.attach(10);
-  servoMotor.write(0);
+  servoMotor.write(95);
   Serial.begin(115200);
   pinMode(8,OUTPUT);
   pinMode(7,OUTPUT);
@@ -77,11 +77,11 @@ void loop()
   tiempo = pulseIn(Echo,HIGH);
   calculateDistance(tiempo);
   
-  if (Comp("Abre puerta")== 0){
-   servoMotor.write(90);
-  }
-  else if (Comp("Cierra puerta") == 0){
+  if (Comp("True")== 0){
    servoMotor.write(0);
+  }
+  else if (Comp("False") == 0){
+   servoMotor.write(95);
   }
   else if (Comp("1F") == 0){
    digitalWrite(8,HIGH);
