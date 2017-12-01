@@ -1,10 +1,5 @@
 #include <Servo.h>
-#include <dht.h>
 Servo servoMotor;
-dht DHT;
-#define DHT11_PIN A0
-dht other_dht;
-#define DHT11_PIN A1
 int servo_one = 10;
 int Echo =12;
 int Trigger = 13;
@@ -59,33 +54,16 @@ void calculateDistance(int tiempo){
   distancia = (tiempo/2)/29.1;
   if (distancia<0 || distancia > 50){
     distancia = 0;
-    sendtemperatureData(distancia);
+    sendData(distancia);
   }
   else{
-    sendtemperatureData(distancia);
+    sendData(distancia);
   }
 }
 
-void sendData(int distancia, int temp_one, int temp_two){
-  Serial.print(distancia);
-  Serial.print(",");
-  Serial.print(temp_one);
-  Serial.print(",");
-  Serial.println(temp_two);
-  delay(50);
+void sendData(int distancia){
+  Serial.println(distancia);
 }
-
-void sendtemperatureData(int distance){
-  int chk = DHT.read11(DHT11_PIN);
-  delay(200);
-  int temp = other_dht.read11(DHT11_PIN);
-  delay(200);
-  int temp_one =DHT.temperature;
-  int temp_two = other_dht.temperature;
-  sendData(distance,temp_one, temp_two);
-  
-  }
-
 
 void loop()
 {
@@ -168,25 +146,17 @@ void loop()
    digitalWrite(3,LOW);
    digitalWrite(2,LOW);
   }
-  else if (Comp("fan_one_on") == 0){
+  else if (Comp("V11") == 0){
    digitalWrite(11,HIGH);
   }
-  else if (Comp("fan_one_off") == 0){
+  else if (Comp("V10") == 0){
    digitalWrite(11,LOW);
   }
-  else if (Comp("fan_two_on") == 0){
+  else if (Comp("V21") == 0){
    digitalWrite(9,HIGH);
   }
-  else if (Comp("fan_two_off") == 0){
+  else if (Comp("V20") == 0){
    digitalWrite(9,LOW);
-  }
-  else if (Comp("all_fans_off") == 0){
-   digitalWrite(9,LOW);
-   digitalWrite(11,LOW);
-  }
-  else if (Comp("all_fans_on") == 0){
-   digitalWrite(9,HIGH);
-   digitalWrite(11,HIGH);
   }
 
 }  
