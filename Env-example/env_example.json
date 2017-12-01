@@ -1,4 +1,8 @@
 {
-  "key" : "52b439c7b0540132b8b01c00feb429ea"
-
+  "key" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "account_sid" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "auth_token" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "twilio_phone" : "XXXXXXXXXXXXXXXXXXXX"
+  "phone" : "XXXXXXXXXXXXXX",
+  "msg" : "Algo se esta aproximando a tu casa."
 }

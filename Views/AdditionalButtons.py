@@ -6,7 +6,6 @@ class AdditionalButtons(Button):
         red = "#F17878"
         green = "#5BDA72"
         font = "Rockwell"
-        parking = "Puertas Estacionamiento"
         overrelief = "sunken"
 
 

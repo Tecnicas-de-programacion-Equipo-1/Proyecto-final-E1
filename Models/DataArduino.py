@@ -32,7 +32,6 @@ class DataArduino():
     def handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
         value = clean_values[0]
-        print(value)
         return value
 
     def update_clock(self):
