@@ -16,7 +16,8 @@ class DataArduino():
             print(port.device, port.name, port.description)
 
     def Arduino(self):
-        self.__arduino = serial.Serial( "COM8", 115200)
+        self.__arduino = serial.Serial('COM5', 115200)
+
 
     def on_off(self, sender, code, state):
         data = ("1" + code) if state else ("0" + code)
@@ -29,11 +30,18 @@ class DataArduino():
         data = str(data).encode("ascii")
         self.__arduino.write(data)
 
+    def on_off_fans(self,function_of_fans, bedroom_fan_state):
+        data = ( bedroom_fan_state + "_on") if function_of_fans else ( bedroom_fan_state + "_off" )
+        data = str(data).encode("ascii")
+        self.__arduino.write(data)
+
     def handle_data(self, data):
         clean_values = data.strip(' \n\r').split(",")
         value = clean_values[0]
-        print(value)
-        return value
+        temp_one = clean_values[1]
+        temp_two = clean_values[2]
+        MainView.catch_values_sensor(self, value)
+
 
     def update_clock(self):
         data = self.__arduino.readline().decode()
