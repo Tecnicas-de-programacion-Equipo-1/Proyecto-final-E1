@@ -31,8 +31,8 @@ class MainView(Tk):
         self.__canvas.grid(column=0)
 
     def __configure_UI(self, action = None, text = None, action_additional_buttons = None):
-        ButtonsMenu(self.__canvas, text, action = self.__did_tap_additional_buttons)
-        RoomsBottonsMenu(self, action = self.__did_tap, fans_action = self.__did_tap_fans)
+        ButtonsMenu(self.__canvas, text, action = self.__did_tap_additional_buttons, fans_action = self.__did_tap_fans)
+        RoomsBottonsMenu(self, action = self.__did_tap)
 
     def __did_tap(self, sender, code, status):
         self.__action(sender, code, status)
