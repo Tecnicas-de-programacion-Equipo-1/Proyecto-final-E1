@@ -28,11 +28,10 @@ class ButtonsMenu():
     class Event:
         click = "<Button-1>"
 
-    def __init__(self, canvas, text, action = None, fans_action = None):
+    def __init__(self, canvas, text, action = None):
         self.__rooms = canvas
         self.__weather_text = text
         self.__action = action
-        self.__fans_action = fans_action
         self.__weather_label = Label(bg=self.Constants.weather_color, width=35, height=10, font=self.Constants.font)
         self.__create_plane()
         self.__create_buttons()

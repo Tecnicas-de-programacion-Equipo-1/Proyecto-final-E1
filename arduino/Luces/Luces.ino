@@ -62,6 +62,7 @@ void calculateDistance(int tiempo){
 }
 
 void sendData(int distancia){
+  delay(50);
   Serial.println(distancia);
 }
 
