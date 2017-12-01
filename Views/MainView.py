@@ -9,10 +9,13 @@ class MainView(Tk):
         height = 500
         width = 800
 
-    def __init__(self, action = None, weather_text = None, action_additional_buttons = None):
+
+
+    def __init__(self, action = None, weather_text = None, action_additional_buttons = None, fans_action = None):
         super().__init__()
         self.__action=action
         self.__action_additional_buttons = action_additional_buttons
+        self.__fan_action = fans_action
         self.title(self.Constants.title)
         self.configure(bg = self.Constants.bg)
         self.maxsize(width = self.Constants.width, height = self.Constants.height)
@@ -28,7 +31,7 @@ class MainView(Tk):
         self.__canvas.grid(column=0)
 
     def __configure_UI(self, action = None, text = None, action_additional_buttons = None):
-        ButtonsMenu(self.__canvas, text, action = self.__did_tap_additional_buttons)
+        ButtonsMenu(self.__canvas, text, action = self.__did_tap_additional_buttons, fans_action = self.__did_tap_fans)
         RoomsBottonsMenu(self, action = self.__did_tap)
 
     def __did_tap(self, sender, code, status):
@@ -37,6 +40,6 @@ class MainView(Tk):
     def __did_tap_additional_buttons(self, on__off, status):
         self.__action_additional_buttons(on__off,status)
 
-
-
+    def __did_tap_fans(self, fan_state, fan_code):
+        self.__fan_action(fan_state, fan_code)
 

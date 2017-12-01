@@ -14,7 +14,7 @@ class MainApp():
         self.__notification_activation =False
         self.__weather = WeatherManager.get_weather_data()
         self.__weather_text  = self.__weather.information
-        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_additional_buttons = self.__on__off_additional_buttons)
+        self.__master = MainView(action = self.__on_off, weather_text = self.__weather_text, action_additional_buttons = self.__on__off_additional_buttons, fans_action = self.__on_off_fan)
         self.__Arduino = DataArduino()
         self.__master.protocol(self.Constants.delete, self.__on_closing)
         self.__Control_twilio = ControlTwilio()
@@ -46,6 +46,9 @@ class MainApp():
         if self.__danger_activation and self.__notification_activation:
             self.__Control_twilio.send_message()
             self.__notification_activation = not(self.__notification_activation)
+
+    def __on_off_fan(self, fan_state, fan_code):
+        self.on_off_fans(self, fan_state, fan_code)
 
     def __on_closing(self):
         self.__Arduino.on_closing(self.__master)
