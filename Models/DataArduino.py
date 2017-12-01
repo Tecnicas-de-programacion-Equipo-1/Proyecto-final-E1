@@ -40,8 +40,7 @@ class DataArduino():
         value = clean_values[0]
         temp_one = clean_values[1]
         temp_two = clean_values[2]
-        MainView.catch_values_sensor(self, value)
-
+        return value
 
     def update_clock(self):
         data = self.__arduino.readline().decode()

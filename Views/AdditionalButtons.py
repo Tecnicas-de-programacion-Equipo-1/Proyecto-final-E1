@@ -6,10 +6,10 @@ class AdditionalButtons(Button):
         red = "#F17878"
         green = "#5BDA72"
         font = "Rockwell"
-        parking = "Puertas Estacionamiento"
-        bedroom = "ventilador - Recamara"
-        livingroom = "Ventilador - Sala"
-        both_fans = "Control - Ventiladores"
+        # parking = "Puertas Estacionamiento"
+        # bedroom = "ventilador - Recamara"
+        # livingroom = "Ventilador - Sala"
+        # both_fans = "Control - Ventiladores"
         overrelief = "sunken"
 
 
