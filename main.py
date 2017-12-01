@@ -48,6 +48,8 @@ class MainApp():
             self.__notification_activation = not(self.__notification_activation)
 
     def __on_off_fan(self, fan_state, fan_code):
+        if (fan_code == "automatic_fans") and (fan_state == True):
+            Automatic_Control_Fans.compare()
         self.on_off_fans(self, fan_state, fan_code)
 
     def __on_closing(self):

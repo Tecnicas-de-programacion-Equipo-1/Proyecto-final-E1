@@ -24,7 +24,7 @@ class ButtonsMenu():
         garden_text = "Jardin"
         weather_text = "Informacion del Clima"
         bg = "#505F80"
-        code_for_others = ["not", "all_fans", "fan_two", "fan_one", "parking"]
+        code_for_others = ["not", "automatic_fans", "fan_two", "fan_one", "parking"]
 
     class Event:
         click = "<Button-1>"

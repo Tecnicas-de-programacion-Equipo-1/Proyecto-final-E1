@@ -40,6 +40,7 @@ class DataArduino():
         value = clean_values[0]
         temp_one = clean_values[1]
         temp_two = clean_values[2]
+        Automatic_Control_Fans(temp_one, temp_two)
         return value
 
     def update_clock(self):
