@@ -19,12 +19,11 @@ class ButtonsMenu():
         black = "black"
         center = N + S + E + W
         font = "Rockwell"
-        additionals_buttons = ["Notificaciones", "Control - Ventiladores", "Ventilador - Sala", "ventilador - Recamara",  "Puertas Estacionamiento"]
-        additionals_buttons_positions = [[550, 210], [520, 265], [540,320], [520,375],[515, 425]]
+        additionals_buttons = ["Notificaciones", "Ventilador Sala", "Ventilador Recamara",  "Puertas Estacionamiento"]
+        additionals_buttons_positions = [[550, 210], [545, 280], [525,350], [515,420]]
         garden_text = "Jardin"
         weather_text = "Informacion del Clima"
         bg = "#505F80"
-        code_for_others = ["not", "all_fans", "fan_two", "fan_one", "parking"]
 
     class Event:
         click = "<Button-1>"
@@ -53,7 +52,7 @@ class ButtonsMenu():
         for index, key in enumerate(self.Constants.additionals_buttons):
             x = self.Constants.additionals_buttons_positions[index][0]
             y = self.Constants.additionals_buttons_positions[index][1]
-            button = AdditionalButtons(key, self.Constants.code_for_others[index], action = self.__tap, fans_action = self.__tap_fans)
+            button = AdditionalButtons(key, action = self.__tap)
             button.position(x,y)
 
         self.__weather_label.place(x = 450, y = 10)
@@ -61,9 +60,3 @@ class ButtonsMenu():
 
     def __tap(self, on__off, status):
         self.__action(on__off, status)
-
-    def __tap_fans(self, fan_state, fan_code ):
-        self.__fans_action(fan_state,fan_code)
-
-
-
