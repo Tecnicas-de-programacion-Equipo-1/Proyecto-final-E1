@@ -1,9 +1,9 @@
 {
-  "key" : "52b439c7b0540132b8b01c00feb429ea",
-  "account_sid" : "AC4ff231f4331f9f92c0d7af97d5e73486",
-  "auth_token" : "65f9eba0a6fa6443d5466c2e66b6f9ba",
-  "twilio_phone" : "+17068436213",
-  "phone" : "+525535097686",
+  "key" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "account_sid" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "auth_token" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "twilio_phone" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "phone" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
   "msg" : "Algo se esta aproximando a tu casa."
 }
 
